@@ -13,6 +13,11 @@ class AuthManager extends Controller
     {
         return view('auth.login');
     }
+    function logout()
+    {
+        Auth::logout();
+        return redirect(route('login'));
+    }
 
     function loginPost(Request $request)
     {

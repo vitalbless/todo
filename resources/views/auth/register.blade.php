@@ -71,6 +71,7 @@
             @endif
 
             <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
+            <a href="{{ route('login') }}" class="text-center" style="margin-top: 5px">Login</a>
             <p class="mt-5 mb-3 text-body-secondary" style="text-align: center">&copy;2024</p>
         </form>
     </main>

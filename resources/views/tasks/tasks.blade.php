@@ -14,9 +14,10 @@
                     {{ session('error') }}
                 </div>
             @endif
-            @foreach ($tasks as $task)
-                <div class="my-3 p-3 bg-body rounded shadow-sm">
-                    <h6 style="font-size: 26px" class="border-bottom pb-2 mb-0">Tasks</h6>
+            <div class="my-3 p-3 bg-body rounded shadow-sm">
+                <div class="mb-3 mt-1">Welcome {{ auth()->user()->id }}</div>
+                <h6 style="font-size: 26px" class="border-bottom pb-2 mb-0">Tasks</h6>
+                @foreach ($tasks as $task)
                     <div class="d-flex text-body-secondary pt-3" style='gap:12px'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -64,11 +65,9 @@
                             <span class="d-block" style="font-size: 16px">{{ $task->description }}</span>
                         </div>
                     </div>
-                    <small class="d-block text-end mt-3">
-                        <a href="#" style="text-decoration: none">Add tasks</a>
-                    </small>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
+            <small class="d-block text-end mt-3">{{ $tasks->links() }}</small>
         </div>
     </main>
 @endsection

@@ -68,6 +68,7 @@
                 </div>
             @endif
             <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+            <a href="{{ route('register') }}" class="text-center" style="margin-top: 120px">Register</a>
             <p class="mt-5 mb-3 text-body-secondary">&copy;2024</p>
         </form>
     </main>
