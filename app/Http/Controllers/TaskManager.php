@@ -41,7 +41,6 @@ class TaskManager extends Controller
     }
     function deleteTask($id)
     {
-
         if (Tasks::where('user_id', auth()->user()->id)->where('id', $id)->delete()) {
             return redirect(route('home'))->with('success', 'Task deleted');
         }

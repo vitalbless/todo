@@ -12,7 +12,7 @@ Route::get('register', [AuthManager::class, 'register'])->name('register');
 Route::post('register', [AuthManager::class, 'registerPost'])->name('register.post');
 
 Route::middleware('auth')->group(function () {
-    Route::get('task/list', [TaskManager::class, 'listTask'])->name(('home'));
+    Route::get('task/list', [TaskManager::class, 'listTask'])->name('home');
 
     Route::get('task/add', [TaskManager::class, 'addTask'])->name('task.add');
 
