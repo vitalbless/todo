@@ -24,6 +24,13 @@ class AuthManager extends Controller
         $request->validate(['email' => 'required|email', 'password' => 'required|min:6']);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if ($user->isBlocked()) {
+                Auth::logout();
+                return redirect()->route('login')->with('error', 'Your account is blocked. Please contact support.');
+            }
+
             return redirect()->intended(route('home'));
         }
         return redirect(route('login'))->with('error', 'Invalid Email or Password');

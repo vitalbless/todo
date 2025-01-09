@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\TaskManager;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('login', [AuthManager::class, 'login'])->name('login');
@@ -21,4 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::put('task/update/{id}', [TaskManager::class, 'updateTaskStatus'])->name('task.status.update');
 
     Route::delete('task/delete/{id}', [TaskManager::class, 'deleteTask'])->name('task.delete');
+    Route::middleware('can:admin-actions')->group(function () {
+        Route::get('admin/users', [AdminController::class, 'index'])->name('admin.users');
+        Route::post('admin/users/{id}/block', [AdminController::class, 'blockUser'])->name('admin.users.block');
+        Route::post('admin/users/{id}/unblock', [AdminController::class, 'unblockUser'])->name('admin.users.unblock');
+    });
 });
